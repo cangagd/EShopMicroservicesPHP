@@ -8,3 +8,11 @@ services:
       - ./Services/Identity:/app/identity
     ports:
       - 4000:4000
+
+  catalog_server:
+    build: ./Services/Catalog
+    command: ["php", "-S", "localhost:4001"]
+    volumes:
+      - ./Services/Catalog:/app/catalog
+    ports:
+      - 4001:4001

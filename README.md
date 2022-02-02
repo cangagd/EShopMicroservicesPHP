@@ -7,3 +7,4 @@ Aplicação simples de microserviço para lojas feita em PHP.
 | Nome | Descrição |
 |------|-----------|
 | Identity | Serviço para autenticação de usuários |
+| Catalog | Serviço para catalogo dos produtos |
