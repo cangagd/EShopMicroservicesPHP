@@ -8,6 +8,10 @@ services:
       - ./Services/Identity:/app/identity
     ports:
       - 4000:4000
+    env_file:
+      - ./.env
+    environment:
+      - DATABASE_URL:postgresql://${IDENTITY_DB_USER}:${IDENTITY_DB_PASS}@identity_database/${IDENTITY_DB_NAME}?serverVersion=13&charset=utf8
 
   catalog_server:
     build: ./Services/Catalog
@@ -16,3 +20,17 @@ services:
       - ./Services/Catalog:/app/catalog
     ports:
       - 4001:4001
+
+  identity_database:
+    image: postgres
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_DB: ${IDENTITY_DB_NAME}
+      POSTGRES_PASSWORD: ${IDENTITY_DB_PASS}
+      POSTGRES_USER: ${IDENTITY_DB_USER}
+    volumes:
+      - identity-data:/var/lib/postgresql/data:rw
+
+volumes:
+  identity-data:
