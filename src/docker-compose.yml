@@ -7,7 +7,7 @@ services:
     volumes:
       - ./Services/Identity:/app/identity
     ports:
-      - 4000:4000
+      - "4000:4000"
     env_file:
       - ./.env
     environment:
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./Services/Catalog:/app/catalog
     ports:
-      - 4001:4001
+      - "4001:4001"
 
   identity_database:
     image: postgres
