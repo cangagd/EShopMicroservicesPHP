@@ -3,7 +3,7 @@ version: "3"
 services:
   identity_server:
     build: ./Services/Identity
-    command: ["php", "-S", "localhost:4000"]
+    command: ["symfony", "server:start"]
     volumes:
       - ./Services/Identity:/app/identity
     ports:
@@ -31,6 +31,8 @@ services:
       POSTGRES_USER: ${IDENTITY_DB_USER}
     volumes:
       - identity-data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
 
 volumes:
   identity-data:
