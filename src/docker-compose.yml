@@ -3,9 +3,11 @@ version: "3"
 services:
   identity_server:
     build: ./Services/Identity
-    command: ["symfony", "server:start"]
+    # command: ["php", "bin/console", "server:start", "0.0.0.0"]
+    command: sh -c "composer install && symfony local:server:start --port 4000"
     volumes:
       - ./Services/Identity:/app/identity
+    working_dir: /app/identity
     ports:
       - "4000:4000"
     env_file:

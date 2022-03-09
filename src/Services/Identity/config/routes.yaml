@@ -1,7 +1,8 @@
-api_login_check:
-    path: /api/login_check
-    methods: POST
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+    prefix: api
 
-api_status_ping:
-    path: /api/status/ping
-    methods: GET
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
